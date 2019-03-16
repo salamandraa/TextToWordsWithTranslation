@@ -21,7 +21,7 @@ object Application extends App {
 
     textPrint(earlyNotTranslatedWords)
 
-    val wordsWithTranslate = earlyNotTranslatedWords.map(word => word -> word /*YandexTranslate.translate("ru", word, key)*/)
+    val wordsWithTranslate = earlyNotTranslatedWords.map(word => word -> YandexTranslate.translate("ru", word, key))
     val outText = wordsWithTranslate.map(outputFormattingWords) :+ dateLine(wordsWithTranslate.size)
     writeFileIfNeedCreate(outputFile, outText)
     writeFileIfNeedCreate(earlyUsingWordsFile, earlyNotTranslatedWords)
